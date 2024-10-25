@@ -27,6 +27,9 @@ public class GridMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //take in user input when enabled
+        //usual wasd movement
+        //calls function that takes in the direction
         if (canInput)
         {
             //input up
@@ -53,13 +56,16 @@ public class GridMovement : MonoBehaviour
                 directionChecker(Vector2.left);
             }
         }
+    }
 
-
-
+    private void FixedUpdate()
+    {
+        //move user when enabled
+        //lerp between grid cells within half a second
+        //move player (and object if given)
+        //resets variables and re enables input
         if (canMove)
         {
-             canInput = false;
-
             if (moveTimer < moveMaxTimer)
             {
                 transform.position = Vector3.Lerp(playerInitPos, playerEndPos, moveTimer / moveMaxTimer);
@@ -73,11 +79,11 @@ public class GridMovement : MonoBehaviour
             }
             else
             {
-                transform.position = playerEndPos;
+                transform.position = worldGrid.LocalToCell(playerEndPos);
 
                 if (ObjtoMove != null)
                 {
-                    ObjtoMove.transform.position = objEndPos;
+                    ObjtoMove.transform.position = worldGrid.LocalToCell(objEndPos);
                 }
 
                 moveTimer = 0;
@@ -88,10 +94,24 @@ public class GridMovement : MonoBehaviour
                 objEndPos = Vector3.zero;
 
                 ObjtoMove = null;
+
+                canInput = true;
+                canMove = false;
             }
         }
+
     }
 
+
+    //throws a raycast in the direction of player movement
+    //if it hits an interactable object store the object
+        //store player pos
+        //store obj pos
+        //enable move disable input
+    //else if not wall or interactable 
+        //store player pos
+        //enable move disable input
+    //else not a valid place to move so do nothing
     private void directionChecker(Vector2 direction)
     {
         RaycastHit2D hit;
@@ -109,11 +129,14 @@ public class GridMovement : MonoBehaviour
             if (hit.transform.gameObject.layer != 8 && hit.transform.gameObject.layer != 7)
             {
                 this.direction = direction;
+
                 canMove = true;
-                playerInitPos = transform.position;
-                playerEndPos = transform.position + (Vector3) direction;
-                objInitPos = hit.transform.position;
-                objEndPos = hit.transform.position + (Vector3)direction;
+                canInput = false;
+
+                playerInitPos = worldGrid.LocalToCell(transform.position);
+                playerEndPos = worldGrid.LocalToCell(transform.position + (Vector3) direction);
+                objInitPos = worldGrid.LocalToCell(hit.transform.position);
+                objEndPos = worldGrid.LocalToCell(hit.transform.position + (Vector3)direction);
             }
         }
 
@@ -122,9 +145,12 @@ public class GridMovement : MonoBehaviour
         else if (hit.transform.gameObject.layer != 8)
         {
             this.direction = direction;
+
             canMove = true;
-            playerInitPos = transform.position;
-            playerEndPos = transform.position + (Vector3)direction;
+            canInput = false;
+
+            playerInitPos = worldGrid.LocalToCell(transform.position);
+            playerEndPos = worldGrid.LocalToCell(transform.position + (Vector3)direction);
         }
     }
 }
