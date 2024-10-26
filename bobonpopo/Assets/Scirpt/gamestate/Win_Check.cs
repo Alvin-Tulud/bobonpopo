@@ -16,7 +16,10 @@ public class Win_Check : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(checkWin());
+        if (canCheck)
+        {
+            StartCoroutine(checkWin());
+        }
     }
 
     //every quarter second check all box spots to see if they have a box ontop
