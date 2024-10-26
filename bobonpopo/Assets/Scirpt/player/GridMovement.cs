@@ -10,7 +10,7 @@ public class GridMovement : MonoBehaviour
 
     private bool canMove = false;
     private float moveTimer = 0;
-    private const float moveMaxTimer = 25;
+    private const float moveMaxTimer = 10;
     private Vector2 direction;
     private Vector3 playerInitPos;
     private Vector3 playerEndPos;
