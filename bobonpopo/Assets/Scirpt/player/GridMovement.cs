@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,9 @@ public class GridMovement : MonoBehaviour
 {
     private Grid worldGrid;
 
-    private bool canInput = true;
+    private bool onTheMove = false;
 
-    private bool canMove = false;
+
     private float moveTimer = 0;
     private const float moveMaxTimer = 10;
     private Vector2 direction;
@@ -30,7 +31,7 @@ public class GridMovement : MonoBehaviour
         //take in user input when enabled
         //usual wasd movement
         //calls function that takes in the direction
-        if (canInput)
+        if (!onTheMove)
         {
             //input up
             if (Input.GetKeyDown(KeyCode.W))
@@ -64,7 +65,7 @@ public class GridMovement : MonoBehaviour
         //lerp between grid cells within half a second
         //move player (and object if given)
         //resets variables and re enables input
-        if (canMove)
+        if (onTheMove)
         {
             if (moveTimer < moveMaxTimer)
             {
@@ -95,8 +96,7 @@ public class GridMovement : MonoBehaviour
 
                 ObjtoMove = null;
 
-                canInput = true;
-                canMove = false;
+                onTheMove = false;
             }
         }
 
@@ -116,41 +116,39 @@ public class GridMovement : MonoBehaviour
     {
         RaycastHit2D hit;
         hit = Physics2D.CircleCast(transform.position, 0.1f, direction, 1f);
-        
-        //check if interactable object is infront of player
-            //check again if a wall is infront of that
-                //if nothing move both player and object
+
+        if (!hit)
+        {
+            Debug.Log("Nothing");
+        }
+
+        // Do nothing if player will hit a wall
+        if (hit.transform.gameObject.layer == 8)
+        {
+            return;
+        }
+
+        // See if an interactable can be moved if player hits one
         if (hit.transform.gameObject.layer == 7)
         {
             ObjtoMove = hit.transform.gameObject;
-
             hit = Physics2D.CircleCast(transform.position, 0.1f, direction, 2f, 8);
 
-            if (hit.transform.gameObject.layer != 8 && hit.transform.gameObject.layer != 7)
+            // If object is immovable so is the player
+            if (hit.transform.gameObject.layer == 8 || hit.transform.gameObject.layer == 7)
             {
-                this.direction = direction;
-
-                canMove = true;
-                canInput = false;
-
-                playerInitPos = worldGrid.LocalToCell(transform.position);
-                playerEndPos = worldGrid.LocalToCell(transform.position + (Vector3) direction);
-                objInitPos = worldGrid.LocalToCell(hit.transform.position);
-                objEndPos = worldGrid.LocalToCell(hit.transform.position + (Vector3)direction);
+                Debug.Log("Immovable box");
+                return;
             }
+            Debug.Log("Should move box");
+            objInitPos = worldGrid.LocalToCell(hit.transform.position);
+            objEndPos = worldGrid.LocalToCell(hit.transform.position + (Vector3)direction);
         }
 
-        //check if nothing is infront of player
-            //move player
-        else if (hit.transform.gameObject.layer != 8)
-        {
-            this.direction = direction;
+        this.direction = direction;
+        playerInitPos = worldGrid.LocalToCell(transform.position);
+        playerEndPos = worldGrid.LocalToCell(transform.position + (Vector3)direction);
 
-            canMove = true;
-            canInput = false;
-
-            playerInitPos = worldGrid.LocalToCell(transform.position);
-            playerEndPos = worldGrid.LocalToCell(transform.position + (Vector3)direction);
-        }
+        onTheMove = true;
     }
 }
