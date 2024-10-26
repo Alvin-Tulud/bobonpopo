@@ -9,6 +9,7 @@ TagManager:
   - Door
   - Start
   - End
+  - Crate_Spot
   layers:
   - Default
   - TransparentFX
