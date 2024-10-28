@@ -117,7 +117,10 @@ public class GridMovement : MonoBehaviour
             if (hit.transform.gameObject.layer == 7)
             {
                 ObjtoMove = hit.transform.gameObject;
-                hit = Physics2D.CircleCast(transform.position, 0.1f, direction, 2f, 8);
+                if (!ObjtoMove.GetComponent<InteractableMovement>().moveObj(direction))
+                {
+                    return;
+                }
 
                 // Logic for signalling the interactable to do stuff, ...
                 // Then determine if player moves or not here
