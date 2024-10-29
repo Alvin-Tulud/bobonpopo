@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractableMovement : MonoBehaviour
@@ -63,11 +64,29 @@ public class InteractableMovement : MonoBehaviour
         gameObject.layer = OriginalLayer;
 
 
+        
+        
+        /*
+         * First check if any obstacle is in the way, then check if the object is a key or not
+         * If current object is a key, prevent any movement IF the obstacle is not a door
+         * If not, just prevent any kind of movement
+         */
+        if (hit) { 
 
-        if (hit && !transform.CompareTag("Key") && !hit.transform.CompareTag("Door"))
-        {
-            return false;
+            if (transform.CompareTag("Key"))
+            {
+                if (!hit.transform.CompareTag("Door"))
+                {
+                    return false;
+                }
+            } 
+            else
+            {
+                return false;
+            }   
         }
+
+
 
         this.direction = direction;
         interInitPos = worldGrid.LocalToCell(transform.position);

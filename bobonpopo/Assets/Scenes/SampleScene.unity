@@ -266,7 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleCheck:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 448
 --- !u!1 &346729617
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +346,6 @@ GameObject:
   - component: {fileID: 368367700}
   - component: {fileID: 368367699}
   - component: {fileID: 368367698}
-  - component: {fileID: 368367701}
   m_Layer: 8
   m_Name: Door
   m_TagString: Door
@@ -467,21 +466,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &368367701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 368367697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a54d6552756f264459c58821ab6f05f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstacleCheck:
-    serializedVersion: 2
-    m_Bits: 384
 --- !u!1 &397131637
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,7 +821,6 @@ GameObject:
   m_Component:
   - component: {fileID: 905974244}
   - component: {fileID: 905974243}
-  - component: {fileID: 905974242}
   - component: {fileID: 905974245}
   m_Layer: 6
   m_Name: Bobo_Physics
@@ -846,33 +829,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &905974242
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905974241}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!61 &905974243
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1041,7 +997,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1290325661}
   - component: {fileID: 1290325660}
-  - component: {fileID: 1290325659}
   - component: {fileID: 1290325658}
   m_Layer: 6
   m_Name: Popo_Physics
@@ -1062,33 +1017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147df794405f69242ba4ec2378553e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &1290325659
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290325657}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!61 &1290325660
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1764,7 +1692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleCheck:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 448
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
