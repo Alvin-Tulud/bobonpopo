@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 339841806}
   - component: {fileID: 339841805}
   - component: {fileID: 339841804}
+  - component: {fileID: 339841807}
   m_Layer: 7
   m_Name: Key
   m_TagString: Key
@@ -251,6 +252,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &339841807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339841803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54d6552756f264459c58821ab6f05f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleCheck:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!1 &346729617
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +346,7 @@ GameObject:
   - component: {fileID: 368367700}
   - component: {fileID: 368367699}
   - component: {fileID: 368367698}
+  - component: {fileID: 368367701}
   m_Layer: 8
   m_Name: Door
   m_TagString: Door
@@ -450,6 +467,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &368367701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368367697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54d6552756f264459c58821ab6f05f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleCheck:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!1 &397131637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,6 +1629,7 @@ GameObject:
   - component: {fileID: 1843208070}
   - component: {fileID: 1843208069}
   - component: {fileID: 1843208071}
+  - component: {fileID: 1843208072}
   m_Layer: 7
   m_Name: Box
   m_TagString: Box
@@ -1717,6 +1750,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &1843208072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843208068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54d6552756f264459c58821ab6f05f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleCheck:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
