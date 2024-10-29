@@ -124,11 +124,11 @@ public class GridMovement : MonoBehaviour
 
                 // Logic for signalling the interactable to do stuff, ...
                 // Then determine if player moves or not here
-                Debug.Log("Interactable");
+                //Debug.Log("Interactable");
             }
         }
 
-        Debug.Log("Nothing");
+        //Debug.Log("Nothing");
 
         
 
@@ -138,4 +138,6 @@ public class GridMovement : MonoBehaviour
 
         onTheMove = true;
     }
+
+    public bool getMove() { return onTheMove; }
 }
