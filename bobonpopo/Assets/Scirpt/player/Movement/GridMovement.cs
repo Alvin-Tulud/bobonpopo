@@ -140,4 +140,6 @@ public class GridMovement : MonoBehaviour
     }
 
     public bool getMove() { return onTheMove; }
+
+    public void setMove(bool move) { onTheMove = move; }
 }
