@@ -20,6 +20,10 @@ public class InteractableMovement : MonoBehaviour
     private Vector2 direction;
     private Vector3 interInitPos;
     private Vector3 interEndPos;
+
+
+    private AudioSource move_audio;
+    private bool playonce;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +31,25 @@ public class InteractableMovement : MonoBehaviour
         TempLayer = 2;//ignore raycast layer
 
         worldGrid = FindAnyObjectByType<Grid>();
+
+        move_audio = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
     {
         if (onTheMove)
         {
+            if (!playonce)
+            {
+                float pitch = Random.Range(0.7f, 1.3f);
+
+                move_audio.pitch = pitch;
+
+                move_audio.Play();
+
+                playonce = true;
+            }
+
             if (moveTimer < moveMaxTimer)
             {
                 transform.position = Vector3.Lerp(interInitPos, interEndPos, moveTimer / moveMaxTimer);
@@ -93,6 +110,8 @@ public class InteractableMovement : MonoBehaviour
         interEndPos = worldGrid.LocalToCell(transform.position + (Vector3)direction);
 
         onTheMove = true;
+
+        playonce = false;
 
         return true;
     }

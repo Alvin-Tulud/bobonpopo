@@ -9,8 +9,11 @@ public class Has_Box : MonoBehaviour
     private int OriginalLayer;
     private int TempLayer;
 
+    private AudioSource targetAudio;
+
     private bool canCheck;
     private bool hasbox;
+    private bool previousState;
 
     
 
@@ -21,6 +24,8 @@ public class Has_Box : MonoBehaviour
 
         OriginalLayer = gameObject.layer;
         TempLayer = 2;
+
+        targetAudio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -54,10 +59,25 @@ public class Has_Box : MonoBehaviour
             }
         }
 
-        
+        playAudio();
+
+        previousState = hasbox;
+
         canCheck = true;
         gameObject.layer = OriginalLayer;
     }
 
     public bool getHasBox() { return hasbox; }
+
+    private void playAudio()
+    {
+        if (previousState != hasbox && hasbox)
+        {
+            float pitch = Random.Range(0.7f, 1.3f);
+
+            targetAudio.pitch = pitch;
+
+            targetAudio.Play();
+        }
+    }
 }

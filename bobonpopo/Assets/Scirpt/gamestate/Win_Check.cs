@@ -6,12 +6,14 @@ public class Win_Check : MonoBehaviour
 {
     private Has_Box[] Box_Spot_States;
     private bool hasWon;
+    private bool bothOnFlag;
     private bool canCheck;
     // Start is called before the first frame update
     void Start()
     {
         Box_Spot_States = FindObjectsByType<Has_Box>(FindObjectsSortMode.None);
         hasWon = false;
+        bothOnFlag = false;
         canCheck = true;
     }
 

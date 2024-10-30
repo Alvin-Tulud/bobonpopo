@@ -8,15 +8,20 @@ public class Win_Visual : MonoBehaviour
     private Sprite[] flag_Sprites;
     private SpriteRenderer flag_Renderer;
     private ParticleSystem flag_Particles;
+    [SerializeField]
+    private AudioClip[] flag_sounds;
+    private AudioSource flag_AudioSource;
     private Win_Check check;
 
     private bool canCheck;
     private bool hasWon;
+    private bool previousState;
     // Start is called before the first frame update
     void Start()
     {
         flag_Renderer = GetComponent<SpriteRenderer>();
         flag_Particles = GetComponent<ParticleSystem>();
+        flag_AudioSource = GetComponent<AudioSource>();
         check = GetComponent<Win_Check>();
 
 
@@ -41,7 +46,7 @@ public class Win_Visual : MonoBehaviour
         canCheck = false;
         yield return new WaitForSeconds(0.25f);
 
-        Debug.Log("checking");
+
 
         hasWon = check.getHasWon();
 
@@ -50,16 +55,32 @@ public class Win_Visual : MonoBehaviour
             flag_Renderer.sprite = flag_Sprites[1];
             flag_Particles.Play();
 
-            Debug.Log("win");
+            playAudio(1);
         }
         else
         {
             flag_Renderer.sprite = flag_Sprites[0];
             flag_Particles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
-            Debug.Log("not win");
-        }
+            playAudio(0);
+;        }
+
+        previousState = hasWon;
 
         canCheck = true;
+    }
+
+    private void playAudio(int index)
+    {
+        if (previousState != hasWon)
+        {
+            flag_AudioSource.clip = flag_sounds[index];
+
+            float pitch = Random.Range(0.7f, 1.3f);
+
+            flag_AudioSource.pitch = pitch;
+
+            flag_AudioSource.Play();
+        }
     }
 }
