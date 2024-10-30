@@ -5,12 +5,14 @@ using UnityEngine;
 public class Win_Check : MonoBehaviour
 {
     private Has_Box[] Box_Spot_States;
-    private bool hasWon = false;
-    private bool canCheck = true;
+    private bool hasWon;
+    private bool canCheck;
     // Start is called before the first frame update
     void Start()
     {
         Box_Spot_States = FindObjectsByType<Has_Box>(FindObjectsSortMode.None);
+        hasWon = false;
+        canCheck = true;
     }
 
     // Update is called once per frame
@@ -29,19 +31,25 @@ public class Win_Check : MonoBehaviour
         canCheck = false;
         yield return new WaitForSeconds(0.25f);
 
+        //Debug.Log("checking");
+
         foreach(var box in Box_Spot_States)
         {
             if (!box.getHasBox())
             {
+                //Debug.Log("no win");
                 hasWon = false;
                 break;
             }
             else
             {
+                //Debug.Log("win");
                 hasWon = true;
             }
         }
 
         canCheck = true;
     }
+
+    public bool getHasWon() { return hasWon; }
 }
