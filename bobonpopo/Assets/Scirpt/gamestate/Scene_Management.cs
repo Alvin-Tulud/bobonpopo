@@ -5,10 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class Scene_Management : MonoBehaviour
 {
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
     public void nextLevel(int buildindex)
     {
         StartCoroutine(exitScene(buildindex));
-
     }
 
     IEnumerator exitScene(int index)
