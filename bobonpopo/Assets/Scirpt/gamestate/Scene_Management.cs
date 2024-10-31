@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Scene_Management : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void nextLevel(int buildindex)
     {
-        
+        StartCoroutine(exitScene(buildindex));
+
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator exitScene(int index)
     {
-        
+        Scene_Switch_Visual.playEndTransition();
+        yield return new WaitForSeconds(1f);
+
+
+        SceneManager.LoadScene(index + 1);
     }
 }

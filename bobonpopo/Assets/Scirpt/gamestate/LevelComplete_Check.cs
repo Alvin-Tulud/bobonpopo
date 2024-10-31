@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelComplete_Check : MonoBehaviour
 {
     private Win_Check[] win_Checks;
     private GridMovement[] gridMovements;
     private AudioSource levelComplete_audio;
+    private Scene_Management sceneSwitcher;
 
     private bool canCheck;
     private bool levelComplete;
@@ -18,6 +20,7 @@ public class LevelComplete_Check : MonoBehaviour
         win_Checks = FindObjectsByType<Win_Check>(FindObjectsSortMode.None);
         gridMovements = FindObjectsByType<GridMovement>(FindObjectsSortMode.None);
         levelComplete_audio = GetComponent<AudioSource>();
+        sceneSwitcher = FindAnyObjectByType<Scene_Management>();
 
         canCheck = true;
         levelComplete = false;
@@ -61,7 +64,7 @@ public class LevelComplete_Check : MonoBehaviour
                 movement.setMove(false);
             }
 
-
+            sceneSwitcher.nextLevel(SceneManager.GetActiveScene().buildIndex);
         }
 
         canCheck = true;
