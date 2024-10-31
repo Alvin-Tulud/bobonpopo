@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7235653173771717539}
   - component: {fileID: 342320657939264173}
-  - component: {fileID: 8802028085351049294}
+  - component: {fileID: 4605337934844484318}
   m_Layer: 0
   m_Name: Popo_Visual
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8802028085351049294
+--- !u!95 &4605337934844484318
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 707862648916516602}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bf028a94757dc7048bc05787d51299ff, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7fa151bcf6816994da9746aeeb6a2948, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
