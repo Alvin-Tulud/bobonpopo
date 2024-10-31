@@ -55,7 +55,7 @@ public class LevelComplete_Check : MonoBehaviour
 
         if (levelComplete)
         {
-            GameObject.Find("BGM").GetComponent<AudioSource>().Stop();
+            //GameObject.Find("BGM").GetComponent<AudioSource>().Stop();
 
             levelComplete_audio.Play();
 

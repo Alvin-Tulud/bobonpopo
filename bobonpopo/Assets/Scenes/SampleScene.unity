@@ -185,6 +185,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 922180355871921784, guid: 86276703a81982743993ac26f13c0ee8, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 922180355871921784, guid: 86276703a81982743993ac26f13c0ee8, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5625
+      objectReference: {fileID: 0}
+    - target: {fileID: 922180355871921784, guid: 86276703a81982743993ac26f13c0ee8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1407275618063609916, guid: 8df5f88a910cda346991c2fc0ca7aa33, type: 3}
+    - target: {fileID: 922180355871921784, guid: 86276703a81982743993ac26f13c0ee8, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 922180355871921784, guid: 86276703a81982743993ac26f13c0ee8, type: 3}
+      propertyPath: m_Color.g
+      value: 0.22926308
+      objectReference: {fileID: 0}
+    - target: {fileID: 922180355871921784, guid: 86276703a81982743993ac26f13c0ee8, type: 3}
+      propertyPath: m_Color.r
+      value: 0.23780707
+      objectReference: {fileID: 0}
+    - target: {fileID: 922180355871921784, guid: 86276703a81982743993ac26f13c0ee8, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2601254855770874545, guid: 86276703a81982743993ac26f13c0ee8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -242,7 +270,8 @@ PrefabInstance:
       value: WorldGrid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 809980251877306181, guid: 86276703a81982743993ac26f13c0ee8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86276703a81982743993ac26f13c0ee8, type: 3}
