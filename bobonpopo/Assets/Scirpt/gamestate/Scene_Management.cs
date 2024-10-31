@@ -21,7 +21,7 @@ public class Scene_Management : MonoBehaviour
     IEnumerator exitScene(int index)
     {
         Scene_Switch_Visual.playEndTransition();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2.5f);
 
 
         SceneManager.LoadScene(index + 1);

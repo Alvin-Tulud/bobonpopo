@@ -7,11 +7,13 @@ public class LevelComplete_Check : MonoBehaviour
 {
     private Win_Check[] win_Checks;
     private GridMovement[] gridMovements;
+    private ParticleSystem[] particles;
     private AudioSource levelComplete_audio;
     private Scene_Management sceneSwitcher;
 
     private bool canCheck;
     private bool levelComplete;
+    private bool playOnce;
 
 
     // Start is called before the first frame update
@@ -19,11 +21,13 @@ public class LevelComplete_Check : MonoBehaviour
     {
         win_Checks = FindObjectsByType<Win_Check>(FindObjectsSortMode.None);
         gridMovements = FindObjectsByType<GridMovement>(FindObjectsSortMode.None);
+        particles = FindObjectsByType<ParticleSystem>(FindObjectsSortMode.None);
         levelComplete_audio = GetComponent<AudioSource>();
         sceneSwitcher = FindAnyObjectByType<Scene_Management>();
 
         canCheck = true;
         levelComplete = false;
+        playOnce = false;
     }
 
     // Update is called once per frame
@@ -56,15 +60,22 @@ public class LevelComplete_Check : MonoBehaviour
         if (levelComplete)
         {
             //GameObject.Find("BGM").GetComponent<AudioSource>().Stop();
-
-            levelComplete_audio.Play();
+            if (!playOnce)
+            {
+                levelComplete_audio.Play();
+                sceneSwitcher.nextLevel(SceneManager.GetActiveScene().buildIndex);
+                playOnce = true;
+            }
 
             foreach(GridMovement movement in gridMovements)
             {
                 movement.setMove(false);
             }
 
-            sceneSwitcher.nextLevel(SceneManager.GetActiveScene().buildIndex);
+            foreach(ParticleSystem particleSystem in particles)
+            {
+                particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
         }
 
         canCheck = true;
